@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test environment with mocha.js and chai.js</title>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
 </head>
+
 <body>
-    
     <h1>Open Devtools</h1>
 
     <p>If bundle.js doesn't exist. Open a terminal and run the command "npm run build" to get the production bundle (minify), otherwise "npm run dev"</p>
 
+    <!-- Mocha screen -->
+    <div id="mocha"></div>
+
+    <!-- Mocha setup -->
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+
+    <script class="mocha-init">
+        mocha.setup({
+            timeout: '100000',
+            ui: 'bdd'
+        });
+    </script>
+
+    <!-- Modules -->
     <script src="/bundle.js"></script>
 
+    <!-- Files to test -->
     <script src="./index.test.js"></script>
 
+    <!-- Mocha startup -->
+    <script class="mocha-exec">
+        mocha.run();
+    </script>
+
 </body>
+
 </html>
